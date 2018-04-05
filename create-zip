@@ -1,0 +1,19 @@
+#!/bin/bash
+app_id=`cat .application_id`
+access_key=`cat .access_key`
+bucket=`cat .bucket`
+secret_key=`cat .secret`
+npm install
+for filename in index.js recipes.js; do
+    sed -i "s/const APP_ID = '';/const APP_ID = '$app_id';/g" $filename
+    sed -i "s/accessKeyId: ''/accessKeyId: '$access_key'/g" $filename
+    sed -i "s/Bucket: ''/Bucket: '$bucket'/g" $filename
+    sed -i "s/secretAccessKey: ''/secretAccessKey: '$secret_key'/g" $filename
+done
+zip -r recipe-handler-lambda.zip index.js recipes.js show.js package.json node_modules
+for filename in index.js recipes.js; do
+    sed -i "s/secretAccessKey: '$secret_key'/secretAccessKey: ''/g" $filename
+    sed -i "s/Bucket: '$bucket'/Bucket: ''/g" $filename
+    sed -i "s/accessKeyId: '$access_key'/accessKeyId: ''/g" $filename
+    sed -i "s/const APP_ID = '$app_id';/const APP_ID = '';/g" $filename
+done
