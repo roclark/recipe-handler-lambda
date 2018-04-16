@@ -3,7 +3,11 @@ app_id=`cat .application_id`
 access_key=`cat .access_key`
 bucket=`cat .bucket`
 secret_key=`cat .secret`
-npm install
+# Temporarily change the name of node_modules so we only save production
+# packages and skip dev packages
+mv node_modules node_modules_temp
+success=$?
+npm install --production
 for filename in index.js recipes.js; do
     sed -i "s/const APP_ID = '';/const APP_ID = '$app_id';/g" $filename
     sed -i "s/accessKeyId: ''/accessKeyId: '$access_key'/g" $filename
@@ -17,3 +21,9 @@ for filename in index.js recipes.js; do
     sed -i "s/accessKeyId: '$access_key'/accessKeyId: ''/g" $filename
     sed -i "s/const APP_ID = '$app_id';/const APP_ID = '';/g" $filename
 done
+# If the node_modules directory existed before, revert back to the dev
+# environment
+if [[ ${success} == 0 ]]; then
+  rm -rf node_modules
+  mv node_modules_temp node_modules
+fi
