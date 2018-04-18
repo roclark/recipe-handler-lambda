@@ -28,11 +28,24 @@ module.exports = {
                 var listItems = [];
                 var speechOutput = '';
                 data.forEach(function(recipe) {
+                    var imageData = {};
+
+                    if (module.exports.hasPicture(recipe)) {
+                        var imageLink = module.exports.getImageLink(recipe);
+                        imageData = {
+                            'sources': [
+                                {
+                                    'url': imageLink
+                                }
+                            ]
+                        };
+                    }
+
                     if (speechOutput != '') {
                         speechOutput += ', ';
                     }
                     listItems.push({
-                        'image': null,
+                        'image': imageData,
                         'token': recipe.title,
                         'textContent': {
                             'primaryText': {
