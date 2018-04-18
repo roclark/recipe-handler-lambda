@@ -18,7 +18,7 @@ var firstRecipe = `
             "Mustard"
         ],
     "directions": "Mix in desired amount of Lawry's seasoning with ground beef and shape into patties. Grill hamburgers. Add olives and condiments as desired when meat is done. Enjoy!",
-    "picture": "RVsOliveBurger.jpg"
+    "picture": true
 }`;
 
 var secondRecipe = `
@@ -39,7 +39,7 @@ var secondRecipe = `
             "2 tbsp. lemon juice"
         ],
     "directions": "In a large frying pan, heat 2 tablespoons olive oil over medium-high heat. Add shrimp to the pan, then season with half teaspoon of salt and half teaspoon crushed red pepper. Cook until the shrimp is pink. Remove the shrimp from the pan and set aside. In the same pan, heat 2 tablespoons olive oil and add asparagus. Add ginger and garlic, then season with half teaspoon of salt. Stir frequently and cook until the asparagus is tender-crisp. Return the shrimp to the pan, then add soy sauce. Stir until the ingredients are well combined. Just before the dish is ready, add lemon juice, stir once more, then serve while hot.",
-    "picture": "ShrimpandAsparagusStirFry.jpg"
+    "picture": false
 }`;
 
 var thirdRecipe = `
@@ -58,7 +58,7 @@ var thirdRecipe = `
         "1/4 cup fresh chopped parsley"
     ],
     "directions": "Position a rack in the middle of the oven. Preheat oven to 375 degrees F | 190 degrees C. Line a baking sheet with a large piece of foil, or 2 long pieces of foil overlapping each other lengthways if your salmon is wide. In a small saucepan, melt the butter over low-medium heat. Add honey, garlic, and lime juice, and whisk until the honey has melted through the butter and the mixture is well combined. Place the salmon onto lined baking sheet. Evenly pour the honey-lime mixture over the salmon. Sprinkle with a good amount of salt (about 2 teaspoons), cracked pepper, and 2 tablespoons of parsley. Fold the sides of the foil up beside the salmon to keep the sauce under the fillet. Bake until cooked through (about 15-18 minutes, depending on the thickness of your fish and your preference of doneness). Then, change oven setting to broil (or grill) for 2-3 minutes on medium heat to caramelize the top. Garnish with remaining parsley and serve immediately with fresh lime slices.",
-    "picture": "HoneyLimeGarlicButterSalmon.jpg"
+    "picture": false
 }`;
 
 const recipeFiles = [{'Body': firstRecipe}, {'Body': secondRecipe}, {'Body': thirdRecipe}];
@@ -78,7 +78,7 @@ const goodRecipes = [
                 "Mustard"
             ],
         "directions": "Mix in desired amount of Lawry's seasoning with ground beef and shape into patties. Grill hamburgers. Add olives and condiments as desired when meat is done. Enjoy!",
-        "picture": "RVsOliveBurger.jpg"
+        "picture": true
     },
     {
         "key": "6e7aa6897b607b30ef25a73331cfb3fa",
@@ -97,7 +97,7 @@ const goodRecipes = [
                 "2 tbsp. lemon juice"
             ],
         "directions": "In a large frying pan, heat 2 tablespoons olive oil over medium-high heat. Add shrimp to the pan, then season with half teaspoon of salt and half teaspoon crushed red pepper. Cook until the shrimp is pink. Remove the shrimp from the pan and set aside. In the same pan, heat 2 tablespoons olive oil and add asparagus. Add ginger and garlic, then season with half teaspoon of salt. Stir frequently and cook until the asparagus is tender-crisp. Return the shrimp to the pan, then add soy sauce. Stir until the ingredients are well combined. Just before the dish is ready, add lemon juice, stir once more, then serve while hot.",
-        "picture": "ShrimpandAsparagusStirFry.jpg"
+        "picture": false
     },
     {
         "key": "8db7965b5960a7b3ee4068ffd22a64a7",
@@ -114,7 +114,7 @@ const goodRecipes = [
             "1/4 cup fresh chopped parsley"
         ],
         "directions": "Position a rack in the middle of the oven. Preheat oven to 375 degrees F | 190 degrees C. Line a baking sheet with a large piece of foil, or 2 long pieces of foil overlapping each other lengthways if your salmon is wide. In a small saucepan, melt the butter over low-medium heat. Add honey, garlic, and lime juice, and whisk until the honey has melted through the butter and the mixture is well combined. Place the salmon onto lined baking sheet. Evenly pour the honey-lime mixture over the salmon. Sprinkle with a good amount of salt (about 2 teaspoons), cracked pepper, and 2 tablespoons of parsley. Fold the sides of the foil up beside the salmon to keep the sauce under the fillet. Bake until cooked through (about 15-18 minutes, depending on the thickness of your fish and your preference of doneness). Then, change oven setting to broil (or grill) for 2-3 minutes on medium heat to caramelize the top. Garnish with remaining parsley and serve immediately with fresh lime slices.",
-        "picture": "HoneyLimeGarlicButterSalmon.jpg"
+        "picture": false
     }
 ]
 

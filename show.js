@@ -2,6 +2,7 @@
 
 const BODY_TEMPLATE_3 = 'bodyTemplate3';
 const LIST_TEMPLATE_1 = 'listTemplate1';
+const BUCKET = '';
 
 module.exports = {
     supportsDisplay: function() {
@@ -13,6 +14,13 @@ module.exports = {
             this.event.context.System.device.supportedInterfaces.Display
 
         return hasDisplay;
+    },
+    hasPicture: function(data) {
+        return data.picture;
+    },
+    getImageLink: function(data) {
+        var link = 'https://s3.amazonaws.com/' + BUCKET + '/recipe_pictures/' + data.key + '.jpg';
+        return link;
     },
     renderTemplate: function(templateType, data) {
         switch(templateType) {
@@ -71,6 +79,19 @@ module.exports = {
                 this.context.succeed(response);
                 break;
             case BODY_TEMPLATE_3:
+                var imageData = {};
+
+                if (module.exports.hasPicture(data)) {
+                    var imageLink = module.exports.getImageLink(data);
+                    imageData = {
+                        'sources': [
+                            {
+                                'url': imageLink
+                            }
+                        ]
+                    };
+                }
+
                 var textContent = '<font size="2">';
                 data.ingredients.forEach(ingredient => {
                     textContent += ' - ' + ingredient + '<br/>';
@@ -87,6 +108,7 @@ module.exports = {
                                     'token': 'string',
                                     'backButton': 'HIDDEN',
                                     'title': data.title.replace('&', '&amp;'),
+                                    'image': imageData,
                                     'textContent': {
                                         'primaryText': {
                                             'type': 'RichText',
