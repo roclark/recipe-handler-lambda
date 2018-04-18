@@ -25,19 +25,19 @@ module.exports = {
                     }
                     listItems.push({
                         'image': null,
-                        'token': recipe[0].title,
+                        'token': recipe.title,
                         'textContent': {
                             'primaryText': {
-                                'text': '<font size="3">' + recipe[0].title.replace('&', '&amp;') + '</font>',
+                                'text': '<font size="3">' + recipe.title.replace('&', '&amp;') + '</font>',
                                 'type': 'RichText'
                             },
                             'secondaryText': {
-                                'text': '<font size="2">' + recipe[0].caption.replace('&', '&amp;') + '</font>',
+                                'text': '<font size="2">' + recipe.caption.replace('&', '&amp;') + '</font>',
                                 'type': 'RichText'
                             }
                         }
                     });
-                    speechOutput += recipe[0].title.replace('&', ' and ');
+                    speechOutput += recipe.title.replace('&', ' and ');
                 });
 
                 var response = {
