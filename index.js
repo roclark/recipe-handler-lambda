@@ -39,6 +39,10 @@ const handlers = {
             });
         });
     },
+    'ElementSelected': function() {
+        // List the details for the selected recipe
+        this.emitWithState('GetRecipeDetails');
+    },
     'ListRecipes': function() {
         if (Show.supportsDisplay.call(this)) {
             Recipes.getAllRecipeData(recipes => {
@@ -56,12 +60,25 @@ const handlers = {
         }
     },
     'GetRecipeDetails': function() {
-        var spokenRecipeName = Recipes.getSpokenRecipe(this.event.request.intent.slots.recipe);
+        var token = null;
+        if (this.event.request && this.event.request.token) {
+            token = this.event.request.token;
+        }
+        var spokenRecipeName = null;
+        if (this.event.request.intent.slots.recipe) {
+            spokenRecipeName = Recipes.getSpokenRecipe(this.event.request.intent.slots.recipe);
+        }
         if (Show.supportsDisplay.call(this)) {
             Recipes.getAllRecipeData(recipes => {
-                Recipes.matchRecipe(spokenRecipeName, recipes, recipe => {
-                    Show.renderTemplate.call(this, BODY_TEMPLATE_3, recipe);
-                });
+                if (token != null) {
+                    Recipes.matchToken(token, recipes, recipe => {
+                        Show.renderTemplate.call(this, BODY_TEMPLATE_3, recipe);
+                    });
+                } else {
+                    Recipes.matchRecipe(spokenRecipeName, recipes, recipe => {
+                        Show.renderTemplate.call(this, BODY_TEMPLATE_3, recipe);
+                    });
+                }
             });
         } else {
             console.log('Need to implement!');

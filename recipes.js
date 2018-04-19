@@ -69,6 +69,13 @@ module.exports = {
         var i = Math.floor(module.exports.randomNumber() * recipes.length);
         callback(recipes[i]);
     },
+    matchToken: function(token, recipes, callback) {
+        recipes.forEach(function(recipe) {
+            if (token == recipe.key) {
+                callback(recipe);
+            }
+        });
+    },
     matchRecipe: function(spokenRecipe, recipes, callback) {
         var recipeDict = {};
         var recipeNames = [];

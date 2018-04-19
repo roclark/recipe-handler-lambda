@@ -163,7 +163,7 @@ describe('Test Recipe Parsing:', function() {
         });
     });
 
-    it('matchRecipe should return the key for a perfectly matched recipe name', () => {
+    it('matchRecipe should return the recipe for a perfectly matched recipe name', () => {
         var expected = goodRecipes[0];
 
         Recipes.matchRecipe('R&V\'s Olive Burger', goodRecipes, result => {
@@ -171,10 +171,18 @@ describe('Test Recipe Parsing:', function() {
         });
     });
 
-    it('matchRecipe should return the key for a close-enough matched recipe name', () => {
+    it('matchRecipe should return the recipe for a close-enough matched recipe name', () => {
         var expected = goodRecipes[0];
 
         Recipes.matchRecipe('R and V Alive Boogie', goodRecipes, result => {
+            expect(result).to.be.equal(expected);
+        });
+    });
+
+    it('matchToken should return the recipe for a matched key', () => {
+        var expected = goodRecipes[0];
+
+        Recipes.matchToken('06c7bc35b93cefcd30423bfc7a94634a', goodRecipes, result => {
             expect(result).to.be.equal(expected);
         });
     });

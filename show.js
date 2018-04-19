@@ -46,7 +46,7 @@ module.exports = {
                     }
                     listItems.push({
                         'image': imageData,
-                        'token': recipe.title,
+                        'token': recipe.key,
                         'textContent': {
                             'primaryText': {
                                 'text': '<font size="3">' + recipe.title.replace('&', '&amp;') + '</font>',
@@ -118,7 +118,7 @@ module.exports = {
                                 'type': 'Display.RenderTemplate',
                                 'template': {
                                     'type': 'BodyTemplate3',
-                                    'token': 'string',
+                                    'token': data.key,
                                     'backButton': 'HIDDEN',
                                     'title': data.title.replace('&', '&amp;'),
                                     'image': imageData,
