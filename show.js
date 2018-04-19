@@ -27,6 +27,7 @@ module.exports = {
             case LIST_TEMPLATE_1:
                 var listItems = [];
                 var speechOutput = '';
+                var cardOutput = '';
                 data.forEach(function(recipe) {
                     var imageData = {};
 
@@ -43,6 +44,7 @@ module.exports = {
 
                     if (speechOutput != '') {
                         speechOutput += ', ';
+                        cardOutput += '\n';
                     }
                     listItems.push({
                         'image': imageData,
@@ -59,6 +61,7 @@ module.exports = {
                         }
                     });
                     speechOutput += recipe.title.replace('&', ' and ');
+                    cardOutput += recipe.title.replace('&', ' and ');
                 });
 
                 var response = {
@@ -83,8 +86,8 @@ module.exports = {
                         'shouldEndSession': true,
                         'card': {
                             'type': 'Simple',
-                            'title': 'List Recipes',
-                            'content': speechOutput
+                            'title': 'Recipes List',
+                            'content': cardOutput
                         }
                     },
                     'sessionAttributes': {}
@@ -106,10 +109,13 @@ module.exports = {
                 }
 
                 var textContent = '<font size="2">';
+                var cardContent = 'Ingredients:\n';
                 data.ingredients.forEach(ingredient => {
-                    textContent += ' - ' + ingredient + '<br/>';
+                    textContent += '\u{2022} ' + ingredient + '<br/>';
+                    cardContent += '\u{2022} ' + ingredient + '\n';
                 });
                 textContent += '<br/>' + data.directions + '</font>';
+                cardContent += '\nDirections:\n' + data.directions;
                 var response = {
                     'version': '1.0',
                     'response': {
@@ -138,8 +144,8 @@ module.exports = {
                         'shouldEndSession': true,
                         'card': {
                             'type': 'Simple',
-                            'title': 'Recipe Description',
-                            'content': textContent
+                            'title': data.title,
+                            'content': cardContent
                         }
                     },
                     'sessionAttributes': {}
